@@ -7,17 +7,19 @@
   <meta name="description" content="CalmReply helps you turn emotional, impulsive, or tense messages into responses that are clear, composed, and under control." />
   <style>
     :root {
-      --bg: #f6f8fb;
-      --surface: rgba(255,255,255,0.78);
-      --surface-strong: #ffffff;
-      --text: #132238;
-      --muted: #5c6b7d;
-      --line: #d9e2ec;
-      --brand: #264653;
-      --brand-2: #4f7c82;
-      --accent: #d7efe8;
-      --accent-2: #eff7f4;
-      --shadow: 0 18px 60px rgba(28, 56, 82, 0.12);
+      --bg: #0c1117;
+      --bg-2: #121923;
+      --surface: rgba(20, 28, 39, 0.78);
+      --surface-2: #151f2b;
+      --surface-3: #0f1722;
+      --text: #eef4fb;
+      --muted: #a7b6c7;
+      --line: rgba(255,255,255,0.10);
+      --brand: #7dd3c7;
+      --brand-2: #8ab4ff;
+      --danger: #ffb2ab;
+      --success: #b7efd6;
+      --shadow: 0 18px 60px rgba(0,0,0,0.35);
       --radius: 24px;
       --max: 1180px;
     }
@@ -29,35 +31,23 @@
       font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
       color: var(--text);
       background:
-        radial-gradient(circle at top left, #e7f4f0 0, transparent 35%),
-        radial-gradient(circle at top right, #e8eefb 0, transparent 28%),
-        linear-gradient(180deg, #f8fbff 0%, #f6f8fb 100%);
+        radial-gradient(circle at top left, rgba(125, 211, 199, 0.09), transparent 24%),
+        radial-gradient(circle at top right, rgba(138, 180, 255, 0.09), transparent 22%),
+        linear-gradient(180deg, #0a1016 0%, #0c1117 26%, #101723 100%);
       line-height: 1.55;
     }
 
     a { color: inherit; text-decoration: none; }
     img { display: block; width: 100%; height: auto; }
     .container { width: min(var(--max), calc(100% - 32px)); margin: 0 auto; }
-    .pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 10px 14px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.7);
-      border: 1px solid rgba(38, 70, 83, 0.1);
-      color: var(--brand);
-      font-size: 0.92rem;
-      backdrop-filter: blur(10px);
-    }
 
     .nav {
       position: sticky;
       top: 0;
       z-index: 30;
       backdrop-filter: blur(14px);
-      background: rgba(246, 248, 251, 0.72);
-      border-bottom: 1px solid rgba(19, 34, 56, 0.06);
+      background: rgba(10, 16, 22, 0.72);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
     }
 
     .nav-inner {
@@ -80,12 +70,12 @@
       width: 40px;
       height: 40px;
       border-radius: 14px;
-      background: linear-gradient(135deg, var(--brand), var(--brand-2));
-      color: white;
       display: grid;
       place-items: center;
-      font-weight: 800;
-      box-shadow: 0 10px 30px rgba(38, 70, 83, 0.22);
+      color: #071018;
+      font-weight: 900;
+      background: linear-gradient(135deg, var(--brand), #dffcf4);
+      box-shadow: 0 10px 30px rgba(125, 211, 199, 0.28);
     }
 
     .nav-links {
@@ -94,6 +84,19 @@
       gap: 22px;
       color: var(--muted);
       font-size: 0.95rem;
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #d8e4f1;
+      font-size: 0.92rem;
+      backdrop-filter: blur(10px);
     }
 
     .button {
@@ -112,102 +115,132 @@
 
     .button-primary {
       background: linear-gradient(135deg, var(--brand), var(--brand-2));
-      color: #fff;
-      box-shadow: 0 12px 28px rgba(38, 70, 83, 0.24);
+      color: #08111a;
+      box-shadow: 0 12px 28px rgba(125, 211, 199, 0.20);
     }
 
-    .button-primary:hover { transform: translateY(-1px); }
     .button-secondary {
-      background: rgba(255,255,255,0.78);
-      border-color: rgba(19, 34, 56, 0.08);
+      background: rgba(255,255,255,0.04);
+      border-color: rgba(255,255,255,0.10);
       color: var(--text);
     }
 
+    .button:hover { transform: translateY(-1px); }
+
     .hero {
-      padding: 72px 0 44px;
+      padding: 72px 0 54px;
     }
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 38px;
+      grid-template-columns: 1.06fr 0.94fr;
+      gap: 34px;
       align-items: center;
     }
 
     h1 {
-      font-size: clamp(2.8rem, 6vw, 5.2rem);
-      line-height: 0.98;
-      letter-spacing: -0.05em;
+      font-size: clamp(3rem, 6vw, 5.4rem);
+      line-height: 0.96;
+      letter-spacing: -0.06em;
       margin: 18px 0 18px;
-      max-width: 12ch;
+      max-width: 10.8ch;
     }
 
-    .hero p.lead {
-      font-size: 1.18rem;
+    .lead {
+      font-size: 1.14rem;
       color: var(--muted);
       margin: 0 0 28px;
       max-width: 58ch;
     }
 
-    .cta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 14px;
-      margin-bottom: 20px;
+    .hero-proof {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 22px;
     }
 
-    .micro-proof {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 16px;
-      color: var(--muted);
-      font-size: 0.95rem;
+    .proof {
+      padding: 14px 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #d9e3ee;
+      font-size: 0.93rem;
     }
 
-    .hero-card {
+    .hero-visual {
+      position: relative;
       background: var(--surface);
-      border: 1px solid rgba(255,255,255,0.7);
+      border: 1px solid rgba(255,255,255,0.08);
       box-shadow: var(--shadow);
       border-radius: 30px;
       overflow: hidden;
-      backdrop-filter: blur(14px);
+      min-height: 640px;
+    }
+
+    .hero-visual::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(8,12,18,0.05), rgba(8,12,18,0.75) 72%, rgba(8,12,18,0.95));
+      pointer-events: none;
     }
 
     .hero-image {
-      aspect-ratio: 4 / 4.2;
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
+      filter: saturate(0.9) contrast(1.02);
     }
 
-    .hero-card-body {
-      padding: 24px;
-      background: linear-gradient(180deg, rgba(255,255,255,0.82), rgba(255,255,255,0.94));
+    .chat-card {
+      position: absolute;
+      left: 24px;
+      right: 24px;
+      bottom: 24px;
+      z-index: 2;
+      padding: 20px;
+      border-radius: 22px;
+      background: rgba(10, 16, 22, 0.78);
+      border: 1px solid rgba(255,255,255,0.08);
+      backdrop-filter: blur(10px);
     }
 
-    .message-stack {
+    .chat-eyebrow {
+      font-size: 0.82rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #d0dfed;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+
+    .bubble-stack {
       display: grid;
       gap: 12px;
     }
 
     .bubble {
-      padding: 14px 16px;
+      padding: 15px 16px;
       border-radius: 18px;
       font-size: 0.96rem;
     }
 
     .bubble-incoming {
-      background: #f3f4f6;
-      color: #334155;
+      background: rgba(255,255,255,0.07);
+      color: #eff5fd;
     }
 
     .bubble-outgoing {
-      background: var(--accent);
-      color: #12333b;
-      border: 1px solid rgba(38, 70, 83, 0.08);
+      background: linear-gradient(135deg, rgba(125, 211, 199, 0.22), rgba(138, 180, 255, 0.18));
+      color: #ebfff9;
+      border: 1px solid rgba(125, 211, 199, 0.18);
     }
 
-    section {
-      padding: 44px 0;
-    }
+    section { padding: 46px 0; }
 
     .section-heading {
       display: flex;
@@ -218,50 +251,38 @@
     }
 
     h2 {
-      font-size: clamp(1.9rem, 4vw, 3rem);
-      line-height: 1.05;
-      letter-spacing: -0.04em;
+      font-size: clamp(2rem, 4vw, 3.15rem);
+      line-height: 1.02;
+      letter-spacing: -0.05em;
       margin: 0;
     }
 
     .section-copy {
-      max-width: 58ch;
+      max-width: 60ch;
       color: var(--muted);
       margin: 10px 0 0;
     }
 
-    .grid-3, .grid-2, .grid-4 {
+    .grid-2, .grid-3, .grid-4 {
       display: grid;
       gap: 18px;
     }
 
-    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     .grid-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 
     .card {
-      background: var(--surface-strong);
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.025));
       border: 1px solid var(--line);
       border-radius: var(--radius);
       padding: 24px;
-      box-shadow: 0 10px 28px rgba(34, 54, 74, 0.05);
-    }
-
-    .step-number {
-      width: 38px;
-      height: 38px;
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      background: var(--accent);
-      color: var(--brand);
-      font-weight: 800;
-      margin-bottom: 16px;
+      box-shadow: 0 10px 28px rgba(0,0,0,0.10);
     }
 
     .card h3 {
       margin: 0 0 10px;
-      font-size: 1.16rem;
+      font-size: 1.1rem;
       letter-spacing: -0.02em;
     }
 
@@ -270,50 +291,55 @@
       margin: 0;
     }
 
-    .list-clean {
-      list-style: none;
-      padding: 0;
-      margin: 0;
+    .stat {
       display: grid;
-      gap: 10px;
+      gap: 6px;
+      align-content: start;
     }
 
-    .list-clean li::before {
-      content: "•";
-      color: var(--brand);
-      font-weight: 700;
-      margin-right: 8px;
+    .stat strong {
+      font-size: 2rem;
+      line-height: 1;
+      letter-spacing: -0.05em;
     }
 
-    .showcase {
+    .split-showcase {
       display: grid;
-      grid-template-columns: 0.95fr 1.05fr;
+      grid-template-columns: 0.9fr 1.1fr;
       gap: 18px;
       align-items: stretch;
     }
 
-    .media-card {
-      overflow: hidden;
+    .media-panel {
       padding: 0;
+      overflow: hidden;
+      min-height: 100%;
+      position: relative;
     }
 
-    .media-card img {
+    .media-panel img {
       height: 100%;
-      object-fit: cover;
       min-height: 100%;
+      object-fit: cover;
+    }
+
+    .media-panel::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(9, 13, 19, 0.05), rgba(9, 13, 19, 0.35));
     }
 
     .example-box {
       display: grid;
       gap: 14px;
-      background: linear-gradient(180deg, #ffffff, #f8fbff);
     }
 
     .example-label {
-      font-size: 0.85rem;
+      font-size: 0.82rem;
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      color: var(--brand);
+      color: #d6e5f6;
       font-weight: 700;
       margin-bottom: 6px;
     }
@@ -322,27 +348,42 @@
       padding: 16px 18px;
       border-radius: 18px;
       border: 1px solid var(--line);
+      background: rgba(255,255,255,0.04);
     }
 
-    .quote.bad { background: #fff3f2; }
-    .quote.good { background: #effaf6; }
+    .quote.bad { border-color: rgba(255,178,171,0.22); background: rgba(255,178,171,0.08); }
+    .quote.good { border-color: rgba(183,239,214,0.22); background: rgba(183,239,214,0.08); }
+
+    .tone-panel {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+      margin-top: 18px;
+    }
+
+    .tone-chip {
+      padding: 14px 16px;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid rgba(255,255,255,0.08);
+      color: #d6e2ef;
+      font-size: 0.94rem;
+    }
 
     .waitlist {
-      background: linear-gradient(180deg, rgba(239,247,244,0.8), rgba(232, 238, 251, 0.65));
-      border-top: 1px solid rgba(19, 34, 56, 0.05);
-      border-bottom: 1px solid rgba(19, 34, 56, 0.05);
+      padding-top: 20px;
     }
 
     .waitlist-wrap {
       display: grid;
-      grid-template-columns: 1fr 0.95fr;
+      grid-template-columns: 1.05fr 0.95fr;
       gap: 18px;
-      align-items: center;
+      align-items: stretch;
     }
 
     .form-shell {
-      background: rgba(255,255,255,0.82);
-      border: 1px solid rgba(255,255,255,0.7);
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.10);
       border-radius: 28px;
       padding: 24px;
       box-shadow: var(--shadow);
@@ -363,21 +404,17 @@
 
     input, textarea {
       width: 100%;
-      border: 1px solid var(--line);
+      border: 1px solid rgba(255,255,255,0.10);
       border-radius: 14px;
       padding: 14px 15px;
       font: inherit;
       color: var(--text);
-      background: rgba(255,255,255,0.95);
+      background: rgba(8, 14, 20, 0.78);
     }
 
     textarea { min-height: 120px; resize: vertical; }
-
-    .fineprint {
-      color: var(--muted);
-      font-size: 0.9rem;
-      margin-top: 12px;
-    }
+    ::placeholder { color: #7f94a8; }
+    .fineprint { color: var(--muted); font-size: 0.9rem; margin-top: 12px; }
 
     .faq-item + .faq-item { margin-top: 18px; }
     .faq-item h3 { margin-bottom: 8px; }
@@ -395,31 +432,35 @@
       align-items: center;
       flex-wrap: wrap;
       padding-top: 14px;
-      border-top: 1px solid rgba(19, 34, 56, 0.08);
+      border-top: 1px solid rgba(255,255,255,0.08);
     }
 
-    @media (max-width: 960px) {
+    @media (max-width: 980px) {
       .hero-grid,
-      .showcase,
+      .split-showcase,
       .waitlist-wrap,
-      .grid-3,
       .grid-4,
-      .grid-2 {
+      .grid-3,
+      .grid-2,
+      .tone-panel,
+      .hero-proof {
         grid-template-columns: 1fr;
       }
 
       .nav-links { display: none; }
       .hero { padding-top: 42px; }
+      .hero-visual { min-height: 560px; }
       .section-heading { display: block; }
-      h1 { max-width: 13ch; }
+      h1 { max-width: 12ch; }
     }
 
     @media (max-width: 640px) {
       .container { width: min(var(--max), calc(100% - 20px)); }
-      .hero-card-body, .card, .form-shell { padding: 18px; }
+      .card, .form-shell, .chat-card { padding: 18px; }
       .cta-row { flex-direction: column; }
       .button { width: 100%; }
-      h1 { font-size: 2.5rem; }
+      h1 { font-size: 2.7rem; }
+      .hero-visual { min-height: 500px; }
     }
   </style>
 </head>
@@ -432,7 +473,7 @@
       </a>
       <div class="nav-links">
         <a href="#how-it-works">How it works</a>
-        <a href="#benefits">Benefits</a>
+        <a href="#example">Example</a>
         <a href="#faq">FAQ</a>
         <a href="#waitlist" class="button button-secondary">Join the waitlist</a>
       </div>
@@ -444,27 +485,28 @@
       <div class="container hero-grid">
         <div>
           <div class="pill">For co-parenting, breakups, family conflict, and other high-stakes conversations</div>
-          <h1>Write calmer replies in difficult conversations.</h1>
+          <h1>Reply with clarity, not emotion.</h1>
           <p class="lead">
-            CalmReply helps you turn emotional, impulsive, or tense messages into responses that are clear, composed, and under control.
+            CalmReply helps you turn tense messages into responses that are calmer, clearer, and more intentional — without sounding weak, cold, or robotic.
           </p>
-          <div class="cta-row">
+          <div class="cta-row" style="display:flex; gap:14px; flex-wrap:wrap; margin-bottom:12px;">
             <a href="#waitlist" class="button button-primary">Join the waitlist</a>
-            <a href="#example" class="button button-secondary">See an example</a>
+            <a href="#example" class="button button-secondary">See a before / after</a>
           </div>
-          <div class="micro-proof">
-            <span>Pause before you escalate</span>
-            <span>Set boundaries without sounding aggressive</span>
-            <span>Reply with confidence</span>
+          <div class="hero-proof">
+            <div class="proof">Pause before you escalate</div>
+            <div class="proof">Set boundaries without sounding aggressive</div>
+            <div class="proof">Send replies you will not regret later</div>
           </div>
         </div>
 
-        <div class="hero-card">
-          <img class="hero-image" src="https://images.pexels.com/photos/14769681/pexels-photo-14769681.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Family talking calmly in a bright living room" />
-          <div class="hero-card-body">
-            <div class="message-stack">
-              <div class="bubble bubble-incoming">“You never help unless I ask ten times. I’m tired of dealing with everything alone.”</div>
-              <div class="bubble bubble-outgoing">“I understand that things feel frustrating right now. I’m willing to discuss what needs to be handled, but I’d like us to keep the conversation constructive.”</div>
+        <div class="hero-visual">
+          <img class="hero-image" src="https://images.pexels.com/photos/4458396/pexels-photo-4458396.jpeg?auto=compress&cs=tinysrgb&w=1400" alt="Serious woman reading a message on her phone" />
+          <div class="chat-card">
+            <div class="chat-eyebrow">A calmer first draft</div>
+            <div class="bubble-stack">
+              <div class="bubble bubble-incoming">“You never help unless I ask ten times. I'm tired of dealing with everything alone.”</div>
+              <div class="bubble bubble-outgoing">“I can see this feels frustrating. I'm willing to discuss what needs to be handled, but I'd like us to keep the conversation constructive and specific.”</div>
             </div>
           </div>
         </div>
@@ -475,29 +517,17 @@
       <div class="container">
         <div class="section-heading">
           <div>
-            <h2>Hard conversations are expensive.</h2>
+            <h2>Built for messages that can ruin your day.</h2>
             <p class="section-copy">
-              A rushed reply can escalate conflict, create regret, and make already difficult relationships even harder. CalmReply helps you slow down, reframe, and respond with clarity.
+              When you're triggered, tired, or under pressure, even one rushed reply can escalate the whole conversation. CalmReply helps you slow down just enough to answer with more control.
             </p>
           </div>
         </div>
         <div class="grid-4">
-          <article class="card">
-            <h3>Co-parenting tension</h3>
-            <p>Keep conversations practical, calm, and less emotionally draining.</p>
-          </article>
-          <article class="card">
-            <h3>Breakups and exes</h3>
-            <p>Protect your boundaries without sending something you regret later.</p>
-          </article>
-          <article class="card">
-            <h3>Family conflict</h3>
-            <p>Answer carefully when emotions, history, and pressure all collide.</p>
-          </article>
-          <article class="card">
-            <h3>Any high-stakes message</h3>
-            <p>When every word matters, the first draft should not come from stress.</p>
-          </article>
+          <article class="card stat"><strong>Less regret</strong><p>Write a better response before you hit send.</p></article>
+          <article class="card stat"><strong>More calm</strong><p>Reduce the chance of conflict spiraling.</p></article>
+          <article class="card stat"><strong>Clearer boundaries</strong><p>Be firm without sounding hostile.</p></article>
+          <article class="card stat"><strong>Lower mental load</strong><p>Stop rewriting the same text ten times.</p></article>
         </div>
       </div>
     </section>
@@ -506,80 +536,54 @@
       <div class="container">
         <div class="section-heading">
           <div>
-            <h2>How CalmReply works</h2>
-            <p class="section-copy">Simple enough to use in seconds, thoughtful enough to help when wording really matters.</p>
+            <h2>How it works</h2>
+            <p class="section-copy">Fast enough to use in seconds. Thoughtful enough for conversations where wording really matters.</p>
           </div>
         </div>
         <div class="grid-3">
           <article class="card">
-            <div class="step-number">1</div>
-            <h3>Paste the message</h3>
+            <h3>1. Paste the message</h3>
             <p>Drop in the message you received, or the reply you are about to send.</p>
           </article>
           <article class="card">
-            <div class="step-number">2</div>
-            <h3>Set your intention</h3>
-            <p>Choose the tone you want: calm, firm, neutral, warm, or boundary-focused.</p>
+            <h3>2. Choose your intention</h3>
+            <p>Select the tone you want: calm, firm, neutral, warm, or boundary-focused.</p>
           </article>
           <article class="card">
-            <div class="step-number">3</div>
-            <h3>Get a better reply</h3>
-            <p>Receive a rewritten version designed to reduce escalation while staying clear and effective.</p>
+            <h3>3. Get a better reply</h3>
+            <p>Receive a clearer version designed to reduce escalation while keeping your point intact.</p>
           </article>
         </div>
-      </div>
-    </section>
-
-    <section id="benefits">
-      <div class="container">
-        <div class="section-heading">
-          <div>
-            <h2>What CalmReply helps you do</h2>
-            <p class="section-copy">Not robotic. Not passive. Just clearer, calmer communication when pressure is high.</p>
-          </div>
-        </div>
-        <div class="grid-2">
-          <article class="card">
-            <h3>Stay calm under pressure</h3>
-            <p>Respond thoughtfully instead of reacting emotionally.</p>
-          </article>
-          <article class="card">
-            <h3>Set boundaries clearly</h3>
-            <p>Be firm without sounding aggressive.</p>
-          </article>
-          <article class="card">
-            <h3>Reduce unnecessary conflict</h3>
-            <p>Lower the chance of arguments spiraling out of control.</p>
-          </article>
-          <article class="card">
-            <h3>Save mental energy</h3>
-            <p>Stop rewriting the same message ten times before you hit send.</p>
-          </article>
+        <div class="tone-panel">
+          <div class="tone-chip">Calm, composed, and non-reactive</div>
+          <div class="tone-chip">Firm without sounding aggressive</div>
+          <div class="tone-chip">Neutral and practical for co-parenting</div>
+          <div class="tone-chip">Warm when you want to de-escalate</div>
         </div>
       </div>
     </section>
 
     <section id="example">
-      <div class="container showcase">
-        <article class="card media-card">
-          <img src="https://images.pexels.com/photos/35745266/pexels-photo-35745266.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Family having a serious discussion in a living room" />
+      <div class="container split-showcase">
+        <article class="card media-panel">
+          <img src="https://images.pexels.com/photos/4353614/pexels-photo-4353614.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Serious person using a smartphone indoors" />
         </article>
         <article class="card example-box">
           <div>
             <h2>From tension to clarity</h2>
-            <p class="section-copy">A better reply does not need to be cold. It needs to be intentional.</p>
+            <p class="section-copy">A better reply doesn't need to be passive. It needs to be intentional.</p>
           </div>
           <div class="quote">
             <div class="example-label">Incoming message</div>
-            <div>“You never help unless I ask ten times. I’m tired of always dealing with everything alone.”</div>
+            <div>“You always make this harder than it needs to be. I shouldn't have to chase you for basic things.”</div>
           </div>
           <div class="quote bad">
-            <div class="example-label">Before</div>
-            <div>“That’s unfair and you know it. I’m not going to argue with you again.”</div>
+            <div class="example-label">Reactive draft</div>
+            <div>“That's not true and you're exaggerating again. I'm done having this argument.”</div>
           </div>
           <div class="quote good">
             <div class="example-label">After with CalmReply</div>
-            <div>“I understand that things feel frustrating right now. I’m willing to discuss what needs to be handled, but I’d like us to keep the conversation constructive.”</div>
+            <div>“I understand that this feels frustrating. I'm open to sorting out the practical details, but I'd like to keep the conversation respectful and focused.”</div>
           </div>
         </article>
       </div>
@@ -588,37 +592,31 @@
     <section>
       <div class="container grid-2">
         <article class="card">
-          <h2>Built for emotionally difficult communication</h2>
-          <p class="section-copy">This is for situations where wording matters: co-parenting, divorce, ex-partner communication, family tension, and any message you need to answer carefully.</p>
+          <h2>Made for emotionally difficult communication</h2>
+          <p class="section-copy">Especially useful for co-parenting, divorce, ex-partner communication, family tension, and any situation where one badly worded message can create more stress than necessary.</p>
         </article>
         <article class="card">
           <h3>Why people will use it</h3>
-          <ul class="list-clean">
-            <li>Clearer communication without sounding weak</li>
-            <li>More control when a message triggers you</li>
-            <li>Better first drafts for sensitive situations</li>
-            <li>More confidence before you press send</li>
-          </ul>
+          <div class="tone-panel" style="grid-template-columns:1fr; margin-top:12px;">
+            <div class="tone-chip">You know what you want to say — you just want to say it better.</div>
+            <div class="tone-chip">You want boundaries without unnecessary escalation.</div>
+            <div class="tone-chip">You want support before sending a high-stakes message.</div>
+            <div class="tone-chip">You want language that feels calm and still sounds like you.</div>
+          </div>
         </article>
       </div>
     </section>
 
     <section class="waitlist" id="waitlist">
       <div class="container waitlist-wrap">
-        <div>
-          <div class="pill">Early access</div>
-          <h2>Be the first to try CalmReply</h2>
-          <p class="section-copy">
-            We are preparing early access now. Join the waitlist to get launch updates, access the first version early, and help shape the product.
-          </p>
-          <div class="card" style="margin-top: 18px; padding: 0; overflow: hidden;">
-            <img src="https://images.pexels.com/photos/8054818/pexels-photo-8054818.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Family sitting together in a calm, comfortable living room" style="aspect-ratio: 16/10; object-fit: cover;" />
-          </div>
+        <div class="card media-panel">
+          <img src="https://images.pexels.com/photos/34967347/pexels-photo-34967347.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Pensive woman in a serious phone conversation" />
         </div>
 
         <form class="form-shell" action="#" method="post">
-          <h3>Join the waitlist</h3>
-          <p class="section-copy" style="margin-top: 6px;">Replace this form action with your email tool later, or connect it to a service like Formspree, Tally, or ConvertKit.</p>
+          <div class="pill">Early access</div>
+          <h2 style="margin-top:16px;">Be first to try CalmReply</h2>
+          <p class="section-copy">Join the waitlist to get launch updates, early access, and a chance to shape the first version.</p>
           <div class="form-row">
             <div>
               <label for="email">Email address</label>
@@ -630,7 +628,7 @@
             </div>
             <button class="button button-primary" type="submit">Get early access</button>
           </div>
-          <p class="fineprint">No spam. Just launch updates and early access news.</p>
+          <p class="fineprint">Replace the form action with Formspree, Tally, or your email tool of choice.</p>
         </form>
       </div>
     </section>
@@ -648,16 +646,16 @@
             <p>Anyone who wants help responding to tense, emotional, or high-conflict messages more calmly.</p>
           </article>
           <article class="card faq-item">
-            <h3>Does it only work for co-parenting or ex-partner conversations?</h3>
-            <p>No. It is especially useful there, but it can also help with family conflict, personal disputes, and other emotionally charged communication.</p>
+            <h3>Is it only for co-parenting or ex-partner conversations?</h3>
+            <p>No. Those are strong use cases, but it also helps with family conflict and other emotionally charged communication.</p>
           </article>
           <article class="card faq-item">
-            <h3>Will it write messages for me automatically?</h3>
-            <p>It helps you rewrite and improve your response while keeping your intention and boundaries intact.</p>
+            <h3>Will it send messages for me?</h3>
+            <p>No. It helps you improve your draft while keeping your intention, tone, and boundaries intact.</p>
           </article>
           <article class="card faq-item">
             <h3>When will it launch?</h3>
-            <p>We are currently collecting early users and feedback before opening the first version.</p>
+            <p>CalmReply is currently collecting early users and feedback before opening the first version.</p>
           </article>
         </div>
       </div>
