@@ -462,6 +462,52 @@
       h1 { font-size: 2.7rem; }
       .hero-visual { min-height: 500px; }
     }
+
+    .waitlist-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 500px;
+  margin: 40px auto 0;
+}
+
+.waitlist-form input,
+.waitlist-form textarea {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+  color: white;
+  font-size: 15px;
+  outline: none;
+}
+
+.waitlist-form input::placeholder,
+.waitlist-form textarea::placeholder {
+  color: rgba(255,255,255,0.5);
+}
+
+.waitlist-form textarea {
+  resize: vertical;
+  min-height: 90px;
+}
+
+.waitlist-form button {
+  padding: 14px;
+  border-radius: 12px;
+  border: none;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  background: white;
+  color: black;
+  transition: 0.2s;
+}
+
+.waitlist-form button:hover {
+  opacity: 0.85;
+}
   </style>
 </head>
 <body>
@@ -613,22 +659,25 @@
           <img src="https://images.pexels.com/photos/34967347/pexels-photo-34967347.jpeg?auto=compress&cs=tinysrgb&w=1200" alt="Pensive woman in a serious phone conversation" />
         </div>
 
-        <form class="form-shell" action="#" method="post">
-          <div class="pill">Early access</div>
-          <h2 style="margin-top:16px;">Be first to try CalmReply</h2>
-          <p class="section-copy">Join the waitlist to get launch updates, early access, and a chance to shape the first version.</p>
-          <div class="form-row">
-            <div>
-              <label for="email">Email address</label>
-              <input id="email" name="email" type="email" placeholder="you@example.com" required />
-            </div>
-            <div>
-              <label for="context">What kind of conversations do you want help with?</label>
-              <textarea id="context" name="context" placeholder="Optional"></textarea>
-            </div>
-            <button class="button button-primary" type="submit">Get early access</button>
-          </div>
-          <p class="fineprint">Replace the form action with Formspree, Tally, or your email tool of choice.</p>
+        <form action="https://formspree.io/f/xkoqennl" method="POST" class="waitlist-form">
+          
+          <input type="hidden" name="_subject" value="New CalmReply waitlist signup" />
+        
+          <input
+            type="email"
+            name="email"
+            placeholder="Enter your email"
+            required
+          />
+        
+          <textarea
+            name="context"
+            placeholder="What kind of conversations do you want help with? (optional)"
+            rows="4"
+          ></textarea>
+        
+          <button type="submit">Join the waitlist</button>
+        
         </form>
       </div>
     </section>
