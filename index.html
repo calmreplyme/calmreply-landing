@@ -86,6 +86,52 @@
       font-size: 0.95rem;
     }
 
+    .waitlist-form {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      max-width: 500px;
+      margin: 40px auto 0;
+    }
+    
+    .waitlist-form input,
+    .waitlist-form textarea {
+      width: 100%;
+      padding: 14px 16px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.12);
+      background: rgba(255,255,255,0.04);
+      color: white;
+      font-size: 15px;
+      outline: none;
+    }
+    
+    .waitlist-form input::placeholder,
+    .waitlist-form textarea::placeholder {
+      color: rgba(255,255,255,0.5);
+    }
+    
+    .waitlist-form textarea {
+      resize: vertical;
+      min-height: 90px;
+    }
+    
+    .waitlist-form button {
+      padding: 14px;
+      border-radius: 12px;
+      border: none;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      background: white;
+      color: black;
+      transition: 0.2s;
+    }
+    
+    .waitlist-form button:hover {
+      opacity: 0.85;
+    }
+
     .pill {
       display: inline-flex;
       align-items: center;
@@ -462,52 +508,6 @@
       h1 { font-size: 2.7rem; }
       .hero-visual { min-height: 500px; }
     }
-
-    .waitlist-form {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  max-width: 500px;
-  margin: 40px auto 0;
-}
-
-.waitlist-form input,
-.waitlist-form textarea {
-  width: 100%;
-  padding: 14px 16px;
-  border-radius: 12px;
-  border: 1px solid rgba(255,255,255,0.12);
-  background: rgba(255,255,255,0.04);
-  color: white;
-  font-size: 15px;
-  outline: none;
-}
-
-.waitlist-form input::placeholder,
-.waitlist-form textarea::placeholder {
-  color: rgba(255,255,255,0.5);
-}
-
-.waitlist-form textarea {
-  resize: vertical;
-  min-height: 90px;
-}
-
-.waitlist-form button {
-  padding: 14px;
-  border-radius: 12px;
-  border: none;
-  font-size: 15px;
-  font-weight: 600;
-  cursor: pointer;
-  background: white;
-  color: black;
-  transition: 0.2s;
-}
-
-.waitlist-form button:hover {
-  opacity: 0.85;
-}
   </style>
 </head>
 <body>
