@@ -1,0 +1,10 @@
+{
+  "name": "coparentalite-reponse",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Application web statique pour proposer des réponses adaptées dans un contexte de coparentalité.",
+  "scripts": {
+    "check": "node --check app.js",
+    "test": "npm run check"
+  }
+}

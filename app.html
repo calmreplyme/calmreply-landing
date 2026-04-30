@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Coparentalité Réponse</title>
+    <link rel="stylesheet" href="app.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar" aria-label="En-tête">
+        <div>
+          <p class="eyebrow">Coparentalité</p>
+          <h1>Réponse</h1>
+        </div>
+        <div class="status-pill" id="analysisStatus">Prêt</div>
+      </header>
+
+      <section class="workspace" aria-label="Analyse de message">
+        <form class="input-panel" id="messageForm">
+          <div class="field-block">
+            <label for="incomingMessage">Message reçu</label>
+            <textarea
+              id="incomingMessage"
+              name="incomingMessage"
+              spellcheck="true"
+              placeholder="Collez ici le message reçu..."
+            ></textarea>
+          </div>
+
+          <div class="controls-grid" aria-label="Paramètres de réponse">
+            <fieldset class="segmented-group">
+              <legend>Relation</legend>
+              <div class="segmented-control">
+                <input type="radio" id="modeTu" name="addressMode" value="tu" checked />
+                <label for="modeTu">Tu</label>
+                <input type="radio" id="modeVous" name="addressMode" value="vous" />
+                <label for="modeVous">Vous</label>
+              </div>
+            </fieldset>
+
+            <fieldset class="segmented-group">
+              <legend>Format</legend>
+              <div class="segmented-control">
+                <input type="radio" id="lengthShort" name="answerLength" value="short" checked />
+                <label for="lengthShort">Court</label>
+                <input type="radio" id="lengthMedium" name="answerLength" value="medium" />
+                <label for="lengthMedium">Complet</label>
+              </div>
+            </fieldset>
+          </div>
+
+          <div class="field-block compact">
+            <label for="childName">Prénom de l'enfant</label>
+            <input id="childName" name="childName" type="text" placeholder="Optionnel" />
+          </div>
+
+          <div class="action-row">
+            <button class="primary-button" type="submit"><span aria-hidden="true">↵</span>Analyser</button>
+            <button class="ghost-button" type="button" id="clearButton"><span aria-hidden="true">×</span>Effacer</button>
+          </div>
+        </form>
+
+        <section class="results-panel" aria-live="polite">
+          <div class="empty-state" id="emptyState">
+            <p>Collez un message pour obtenir une lecture calme, centrée sur l'enfant.</p>
+          </div>
+
+          <div class="results hidden" id="results">
+            <div class="score-strip" id="scoreStrip"></div>
+
+            <section class="result-section">
+              <div class="section-heading"><h2>Lecture du message</h2></div>
+              <div class="signal-grid" id="signalGrid"></div>
+            </section>
+
+            <section class="result-section">
+              <div class="section-heading"><h2>Posture conseillée</h2></div>
+              <ul class="advice-list" id="adviceList"></ul>
+            </section>
+
+            <section class="result-section">
+              <div class="section-heading"><h2>Réponses proposées</h2></div>
+              <div class="response-list" id="responseList"></div>
+            </section>
+          </div>
+        </section>
+      </section>
+
+      <footer class="app-footer">
+        <p>
+          Outil d'aide à la rédaction. En cas de menace, danger immédiat, décision juridique ou
+          urgence médicale, contactez les professionnels compétents.
+        </p>
+      </footer>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
